@@ -1,5 +1,7 @@
+import { ValidationService } from './../../../services/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import PASSWORD_POLICY from '../../../constants/password-policy';
 
 @Component({
   selector: 'app-create-employee',
@@ -8,24 +10,25 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CreateEmployeeComponent implements OnInit {
 
-  validateForm: FormGroup;
+  employeeForm: FormGroup;
+  creatingEmployee:boolean=false;
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+    for (const i in this.employeeForm.controls) {
+      this.employeeForm.controls[i].markAsDirty();
+      this.employeeForm.controls[i].updateValueAndValidity();
     }
   }
 
   updateConfirmValidator(): void {
     /** wait for refresh value */
-    Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
+    Promise.resolve().then(() => this.employeeForm.controls.checkPassword.updateValueAndValidity());
   }
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
       return { required: true };
-    } else if (control.value !== this.validateForm.controls.password.value) {
+    } else if (control.value !== this.employeeForm.controls.password.value) {
       return { confirm: true, error: true };
     }
     return {};
@@ -35,19 +38,14 @@ export class CreateEmployeeComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private validationService:ValidationService) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
+    this.employeeForm = this.fb.group({
+      username: [null, [Validators.minLength(3), Validators.required]],
+      displayName: [null, [Validators.required]],
+      password: [null, [Validators.minLength(PASSWORD_POLICY.MinLength),Validators.maxLength(PASSWORD_POLICY.MaxLength),Validators.required,this.validationService.passwordValidator]],
+      checkPassword: [null, [Validators.required, this.confirmationValidator]]
     });
   }
 
