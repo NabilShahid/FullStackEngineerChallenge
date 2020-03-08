@@ -1,0 +1,25 @@
+<div nz-row>
+    <div nz-col nzMd="8" >
+        <ul nz-menu nzMode="inline">
+            <li routerLink="/admin/home" nz-menu-item nzSelected>
+              <i nz-icon nzType="mail"></i>
+              Home
+            </li>
+            <li routerLink="/admin/employees" nz-menu-item>
+              <i nz-icon nzType="mail"></i>
+              Employees
+            </li>
+            <li routerLink="/navone" nz-menu-item>
+              <i nz-icon nzType="mail"></i>
+              Performance Reviews
+            </li>
+          </ul>
+    </div>
+    <div nz-col nzMd="16">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </div>
+
+
+
