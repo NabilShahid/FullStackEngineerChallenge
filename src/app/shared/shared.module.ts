@@ -7,6 +7,7 @@ import { NzFormModule } from "ng-zorro-antd/form";
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
     NzFormModule,
     NzMenuModule,
     NzIconModule,
-    NzGridModule
+    NzGridModule,
+    NzSelectModule
   ],
   exports: [
     NzInputModule,
@@ -28,7 +30,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
     NzFormModule,
     NzMenuModule,
     NzIconModule,
-    NzGridModule
+    NzGridModule,
+    NzSelectModule
   ]
 })
 export class SharedModule {}

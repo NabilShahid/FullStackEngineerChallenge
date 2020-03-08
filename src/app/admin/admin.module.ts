@@ -5,13 +5,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { RouterModule } from '@angular/router';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [AdminMainComponent,AdminHomeComponent,AdminEmployeesComponent],
+  declarations: [AdminMainComponent,AdminHomeComponent,AdminEmployeesComponent, CreateEmployeeComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild([
       {
