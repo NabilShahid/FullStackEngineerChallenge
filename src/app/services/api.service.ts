@@ -1,4 +1,4 @@
-import { Employee } from './../../types/common-types';
+import { Employee } from "./../../types/common-types";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
@@ -10,11 +10,17 @@ import API_OPERATIONS from "../constants/api-operactions";
 export class ApiService {
   constructor(private http: HttpClient) {}
   httpOptions = {};
-  createEmployee(employeeObject:Employee) {
+  createEmployee(employeeObject: Employee) {
     return this.performPostRequest(
       "createEmployee",
       API_OPERATIONS.AdminOperations,
       employeeObject
+    );
+  }
+  getEmployees(startIndex, pageSize,orderBy,order, searchString) {
+    return this.performGetRequest(
+      `getEmployees?startIndex=${startIndex}&pageSize=${pageSize}&searchString=${searchString}&order=${order}`,
+      API_OPERATIONS.AdminOperations
     );
   }
   async performGetRequest(url: string, operation: string) {

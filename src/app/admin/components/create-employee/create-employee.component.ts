@@ -1,3 +1,8 @@
+/**
+ * CreateEmployeeComponent
+ * Contains Form builder for employee form. Collects and validates employee information.
+ * Creates employee using creation api from api-service on form submit. 
+ */
 import { ApiService } from './../../../services/api.service';
 import { Employee } from "./../../../../types/common-types";
 import { ValidationService } from "./../../../services/validation.service";
