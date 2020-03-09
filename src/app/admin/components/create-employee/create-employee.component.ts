@@ -53,7 +53,10 @@ export class CreateEmployeeComponent implements OnInit {
       DisplayName: this.employeeForm.get("displayName").value,
       UserName: this.employeeForm.get("username").value,
       Password: this.employeeForm.get("password").value,
-      PhoneNumber: this.employeeForm.get("phoneNumberPrefix").value+'-'+this.employeeForm.get("phoneNumber").value
+      PhoneNumber:
+        this.employeeForm.get("phoneNumberPrefix").value +
+        "-" +
+        this.employeeForm.get("phoneNumber").value
     };
   }
 

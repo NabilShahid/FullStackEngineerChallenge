@@ -4,3 +4,8 @@ export type Employee={
     PhoneNumber:string,
     Password:string,
  }
+ export type ClientSessionObject={
+    EmployeeId:string,
+    DisplayName:string,
+    IsAdmin:boolean
+}

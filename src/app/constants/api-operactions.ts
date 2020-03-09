@@ -1,4 +1,5 @@
 enum API_OPERATIONS{
-    AdminOperations='admin-operations'
+    AdminOperations='admin-operations',
+    AppOperations='app-operations'
 }
 export default API_OPERATIONS;

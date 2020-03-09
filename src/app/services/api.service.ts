@@ -17,10 +17,16 @@ export class ApiService {
       employeeObject
     );
   }
-  getEmployees(startIndex, pageSize,orderBy,order, searchString) {
+  getEmployees(startIndex, pageSize, orderBy, order, searchString) {
     return this.performGetRequest(
       `getEmployees?startIndex=${startIndex}&pageSize=${pageSize}&searchString=${searchString}&order=${order}`,
       API_OPERATIONS.AdminOperations
+    );
+  }
+  login(userName: string, password: string) {
+    return this.performGetRequest(
+      `login?userName=${userName}&password=${password}`,
+      API_OPERATIONS.AppOperations
     );
   }
   async performGetRequest(url: string, operation: string) {

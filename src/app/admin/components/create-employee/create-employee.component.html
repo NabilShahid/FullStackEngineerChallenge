@@ -25,7 +25,9 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired
+        >Phone Number</nz-form-label
+      >
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
@@ -52,11 +54,7 @@
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired
         >Password</nz-form-label
       >
-      <nz-form-control
-        [nzSm]="14"
-        [nzXs]="24"
-        [nzErrorTip]="errorTplPassword"
-      >
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTplPassword">
         <input
           nz-input
           type="password"
@@ -76,7 +74,11 @@
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
         >Confirm Password</nz-form-label
       >
-      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTplConfirmPassword">
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzErrorTip]="errorTplConfirmPassword"
+      >
         <input
           nz-input
           type="password"
@@ -96,11 +98,7 @@
 
     <nz-form-item nz-row class="create-area">
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button
-          [nzLoading]="creatingEmployee"
-          nz-button
-          nzType="primary"
-        >
+        <button [nzLoading]="creatingEmployee" nz-button nzType="primary">
           Create
         </button>
       </nz-form-control>
