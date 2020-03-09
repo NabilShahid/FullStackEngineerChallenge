@@ -10,10 +10,11 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ReviewsListComponent } from './components/reviews-list/reviews-list.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ReviewsListComponent],
   imports: [
     CommonModule,
     NzInputModule,
@@ -38,7 +39,8 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzGridModule,
     NzSelectModule,
     NzTableModule,
-    NzMessageModule
+    NzMessageModule,
+    ReviewsListComponent
   ]
 })
 export class SharedModule {}

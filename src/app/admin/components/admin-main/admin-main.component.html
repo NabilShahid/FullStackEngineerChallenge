@@ -1,5 +1,5 @@
-<div nz-row>
-    <div nz-col nzMd="8" >
+<div nz-row class="admin-main-container">
+    <div nz-col nzMd="5" >
         <ul nz-menu nzMode="inline">
             <li routerLink="/admin/home" nz-menu-item nzSelected>
               <i nz-icon nzType="mail"></i>
@@ -9,13 +9,13 @@
               <i nz-icon nzType="mail"></i>
               Employees
             </li>
-            <li routerLink="/navone" nz-menu-item>
+            <li routerLink="/admin/performance-reviews" nz-menu-item>
               <i nz-icon nzType="mail"></i>
               Performance Reviews
             </li>
           </ul>
     </div>
-    <div nz-col nzMd="16">
+    <div nz-col nzMd="19" class="main-container">
       <router-outlet></router-outlet>
     </div>
     

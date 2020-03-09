@@ -1,3 +1,6 @@
-[nz-menu] {
-    width: 240px;
-  }
+.main-container{
+  padding: 10px 15px;
+}
+.admin-main-container{
+  margin-top: 20px;
+}
