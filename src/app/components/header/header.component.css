@@ -1,3 +1,6 @@
-#header{
-    background-color: rebeccapurple;
+#header {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 12px;
+  box-shadow: var(--material-box-shadow);
 }

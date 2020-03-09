@@ -10,7 +10,7 @@ import { ApiService } from "./../../services/api.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import MESSAGES from 'src/app/constants/messages';
+import MESSAGES from "src/app/constants/messages";
 
 @Component({
   selector: "app-login",
@@ -20,7 +20,7 @@ import MESSAGES from 'src/app/constants/messages';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   logingIn: boolean = false;
-  loginErrorMsg:string;
+  loginErrorMsg: string;
   submitForm(): void {
     for (const i in this.loginForm.controls) {
       this.loginForm.controls[i].markAsDirty();
@@ -53,9 +53,8 @@ export class LoginComponent implements OnInit {
     if (loginResult) {
       this.storageService.user = loginResult;
       this.navigateUser(loginResult.IsAdmin);
-    }
-    else{
-      this.loginErrorMsg=MESSAGES.InvalidCredentials;
+    } else {
+      this.loginErrorMsg = MESSAGES.InvalidCredentials;
     }
   }
   navigateUser(isAdmin: boolean) {
@@ -70,5 +69,11 @@ export class LoginComponent implements OnInit {
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]]
     });
+    this.loginIfAuthenticated();
+  }
+  loginIfAuthenticated(): void {
+    if (this.storageService.user.EmployeeId) {
+      this.navigateUser(this.storageService.user.IsAdmin);
+    }
   }
 }
