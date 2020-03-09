@@ -7,7 +7,7 @@
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
-        nzErrorTip="The input is not valid E-mail!"
+        nzErrorTip="User name is required!"
       >
         <input nz-input formControlName="username" id="username" />
       </nz-form-control>
@@ -19,9 +19,33 @@
       <nz-form-control
         [nzSm]="14"
         [nzXs]="24"
-        nzErrorTip="The input is not valid E-mail!"
+        nzErrorTip="Employee name is required!"
       >
         <input nz-input formControlName="displayName" id="displayName" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        [nzValidateStatus]="employeeForm.controls['phoneNumber']"
+        nzErrorTip="Phone number is required!"
+      >
+        <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+          <ng-template #addOnBeforeTemplate>
+            <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+              <nz-option nzLabel="+81" nzValue="+81"></nz-option>
+              <nz-option nzLabel="+82" nzValue="+82"></nz-option>
+              <nz-option nzLabel="+83" nzValue="+83"></nz-option>
+              <nz-option nzLabel="+84" nzValue="+84"></nz-option>
+              <nz-option nzLabel="+85" nzValue="+85"></nz-option>
+              <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+              <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+            </nz-select>
+          </ng-template>
+          <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+        </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
@@ -74,7 +98,6 @@
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button
           [nzLoading]="creatingEmployee"
-          [disabled]="!employeeForm.valid"
           nz-button
           nzType="primary"
         >
