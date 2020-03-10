@@ -1,1 +1,50 @@
-<p>reviews-list works!</p>
+<nz-list
+  [nzDataSource]="data"
+  [nzItemLayout]="'vertical'"
+  [nzRenderItem]="item"
+  [nzPagination]="pagination"
+  [nzFooter]="footer"
+>
+  <ng-template #item let-item>
+    <nz-list-item [nzActions]="[itemActions]" [nzExtra]="extra">
+      <ng-template #itemActions>
+        <button nz-button nzType="default" style="margin-left: 43px;">
+          <i nz-icon nzType="user-add"></i>Add Assignees
+        </button>
+        <button nz-button nzType="default" style="margin-left: 10px;">
+          <i nz-icon nzType="unordered-list"></i>View Reviews
+        </button>
+      </ng-template>
+      <ng-template #extra>
+        <nz-rate [nzDisabled]="true" [ngModel]="0"></nz-rate>
+        <div style="margin-top: 5px;" class="center-align">
+          <span class="cursor-pointer" nz-tooltip nzTooltipTitle="Total Assignees">
+            <i nz-icon nzType="user"></i>
+            156
+          </span>
+
+          <span class="cursor-pointer" nz-tooltip nzTooltipTitle="Feedbacks Submitted">
+            <i nz-icon nzType="check" style="margin-left: 20px;"></i>
+            2
+          </span>
+        </div>
+      </ng-template>
+
+      <nz-list-item-meta
+        [nzAvatar]="item.avatar"
+        [nzTitle]="nzTitle"
+        [nzDescription]="item.jobTitle"
+      >
+        <ng-template #nzTitle>Employee Name</ng-template>
+      </nz-list-item-meta>
+    </nz-list-item>
+  </ng-template>
+
+  <ng-template #pagination>
+    <nz-pagination
+      [nzPageIndex]="1"
+      [nzTotal]="50"
+      (nzPageIndexChange)="loadData($event)"
+    ></nz-pagination>
+  </ng-template>
+</nz-list>

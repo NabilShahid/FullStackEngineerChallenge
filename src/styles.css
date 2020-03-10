@@ -9,3 +9,9 @@
 .error{
     color:red;
 }
+.center-align{
+    text-align: center;
+}
+.cursor-pointer{
+    cursor: pointer;
+}

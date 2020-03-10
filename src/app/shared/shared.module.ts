@@ -10,26 +10,19 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 import { ReviewsListComponent } from './components/reviews-list/reviews-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [ReviewsListComponent],
   imports: [
     CommonModule,
-    NzInputModule,
-    NzCheckboxModule,
-    NzButtonModule,
-    NzFormModule,
-    NzMenuModule,
-    NzIconModule,
-    NzGridModule,
-    NzSelectModule,
-    NzTableModule,
-    NzMessageModule
-    
-  ],
-  exports: [
+    FormsModule,
     NzInputModule,
     NzCheckboxModule,
     NzButtonModule,
@@ -40,6 +33,29 @@ import { ReviewsListComponent } from './components/reviews-list/reviews-list.com
     NzSelectModule,
     NzTableModule,
     NzMessageModule,
+    NzListModule,
+    NzPaginationModule,
+    NzRateModule,
+    NzToolTipModule
+
+    
+  ],
+  exports: [
+    FormsModule,
+    NzInputModule,
+    NzCheckboxModule,
+    NzButtonModule,
+    NzFormModule,
+    NzMenuModule,
+    NzIconModule,
+    NzGridModule,
+    NzSelectModule,
+    NzTableModule,
+    NzMessageModule,
+    NzListModule,
+    NzPaginationModule,
+    NzToolTipModule,
+    NzRateModule,
     ReviewsListComponent
   ]
 })
