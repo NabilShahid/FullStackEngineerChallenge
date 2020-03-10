@@ -51,4 +51,13 @@ export class AdminEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployeeData();
   }
+  visible = false;
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
 }

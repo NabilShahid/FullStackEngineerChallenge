@@ -6,7 +6,7 @@
 import { ApiService } from "./../../../services/api.service";
 import { Employee } from "./../../../../types/common-types";
 import { ValidationService } from "./../../../services/validation.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -26,6 +26,7 @@ import MESSAGES from "src/app/constants/messages";
 export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   creatingEmployee: boolean = false;
+  @Output() closeDrawer = new EventEmitter();
 
   async submitForm(): Promise<void> {
     for (const i in this.employeeForm.controls) {
@@ -43,6 +44,7 @@ export class CreateEmployeeComponent implements OnInit {
       this.message.create("error", MESSAGES.DuplicationEmployeeUserName);
     } else {
       this.message.create("success", MESSAGES.CreateEmployeeSuccess);
+      this.closeDrawer.emit();
     }
 
     this.creatingEmployee = false;

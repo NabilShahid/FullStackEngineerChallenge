@@ -1,3 +1,28 @@
+<div class="create-employee-actions">
+  <button
+    nz-button
+    nzType="default"
+    class="action-button"
+    (click)="visible = true"
+  >
+    <i nz-icon nzType="plus"></i>Create New
+  </button>
+</div>
+<nz-drawer
+  [nzBodyStyle]="{
+    height: 'calc(100% - 55px)',
+    overflow: 'auto',
+    'padding-bottom': '53px'
+  }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Create Employee"
+  (nzOnClose)="close()"
+>
+  <app-create-employee (closeDrawer)="visible = false" *ngIf="visible"></app-create-employee>
+</nz-drawer>
+
 <nz-table
   #ajaxTable
   nzShowSizeChanger
