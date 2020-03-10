@@ -11,5 +11,14 @@ export class AdminPerformanceReviewsComponent implements OnInit {
 
   ngOnInit() {
   }
+  visible = false;
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
 
 }

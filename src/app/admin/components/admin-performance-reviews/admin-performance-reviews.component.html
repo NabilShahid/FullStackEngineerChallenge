@@ -1,6 +1,33 @@
 <div class="performance-review-actions">
-  <button nz-button nzType="default" class="action-button">
+  <button nz-button nzType="default" class="action-button" (click)="visible=true">
     <i nz-icon nzType="plus"></i>Create New
   </button>
 </div>
 <app-reviews-list></app-reviews-list>
+<nz-drawer
+  [nzBodyStyle]="{
+    height: 'calc(100% - 55px)',
+    overflow: 'auto',
+    'padding-bottom': '53px'
+  }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Create"
+  (nzOnClose)="close()"
+>
+  <app-create-review></app-create-review>
+  <div class="footer">
+    <button
+      type="button"
+      (click)="close()"
+      class="ant-btn"
+      style="margin-right: 8px;"
+    >
+      <span>Cancel</span>
+    </button>
+    <button type="button" (click)="close()" class="ant-btn ant-btn-primary">
+      <span>Submit</span>
+    </button>
+  </div>
+</nz-drawer>
