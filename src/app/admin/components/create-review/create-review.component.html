@@ -1,1 +1,31 @@
-<app-user-picker></app-user-picker>
+<div nz-row>
+  <div nz-col [nzMd]="4">Employee:</div>
+  <div nz-col [nzMd]="20">
+    <app-user-picker
+      (selectedUserEmitter)="
+        employeeId = $event; updateMultipleExcludeUsers($event)
+      "
+      [options]="singlePickerOptions"
+    ></app-user-picker>
+  </div>
+</div>
+<div nz-row style="margin-top: 30px;">
+  <div nz-col [nzMd]="4">Assignees:</div>
+  <div nz-col [nzMd]="20">
+    <app-user-picker
+      (selectedUserEmitter)="assignees = $event"
+      [options]="multiPickerOptions"
+    ></app-user-picker>
+  </div>
+</div>
+
+<div class="drawer-footer">
+  <button
+    (click)="createPerformanceReview()"
+    [nzLoading]="creatingReview"
+    nz-button
+    nzType="primary"
+  >
+    <span>Create Review</span>
+  </button>
+</div>

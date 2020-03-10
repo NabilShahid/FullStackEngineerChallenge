@@ -1,20 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import {map, switchMap, debounceTime} from "rxjs/operators";
-import { HttpClient } from '@angular/common/http';
+import { environment } from "./../../../../environments/environment";
+import {
+  UserPickerOptions,
+  EmployeeSearchResult
+} from "./../../../../types/common-types";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { map, switchMap, debounceTime, filter } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import API_OPERATIONS from "src/app/constants/api-operactions";
 
 @Component({
-  selector: 'app-user-picker',
-  templateUrl: './user-picker.component.html',
-  styleUrls: ['./user-picker.component.css']
+  selector: "app-user-picker",
+  templateUrl: "./user-picker.component.html",
+  styleUrls: ["./user-picker.component.css"]
 })
 export class UserPickerComponent implements OnInit {
-
-  randomUserUrl = 'https://api.randomuser.me/?results=5';
-  searchChange$ = new BehaviorSubject('');
+  @Input() options: UserPickerOptions;
+  getUrl = searchString =>
+    environment.apiServer +
+    API_OPERATIONS.UserOperations +
+    "/searchEmployees?searchString=" +
+    searchString;
+  searchChange$ = new Subject<Object>();
   optionList: string[] = [];
   selectedUser: string;
   isLoading = false;
+  @Output() selectedUserEmitter = new EventEmitter();
 
   onSearch(value: string): void {
     this.isLoading = true;
@@ -25,23 +36,21 @@ export class UserPickerComponent implements OnInit {
 
   ngOnInit(): void {
     // tslint:disable:no-any
-    const getRandomNameList = (name: string) =>
-      this.http
-        .get(`${this.randomUserUrl}`)
-        .pipe(map((res: any) => res.results))
-        .pipe(
-          map((list: any) => {
-            return list.map((item: any) => `${item.name.first} ${name}`);
-          })
-        );
-    const optionList$: Observable<string[]> = this.searchChange$
+    const getUsersList = (name: string) =>
+      this.http.get(`${this.getUrl(name)}`).pipe(
+        map((arr: Array<EmployeeSearchResult>) => {
+          return arr.filter(
+            r => !this.options.ExcludeUsers.includes(r.EmployeeId)
+          );
+        })
+      );
+    const optionList$: Observable<Object> = this.searchChange$
       .asObservable()
       .pipe(debounceTime(500))
-      .pipe(switchMap(getRandomNameList));
-    optionList$.subscribe(data => {
+      .pipe(switchMap(getUsersList));
+    optionList$.subscribe((data: any) => {
       this.optionList = data;
       this.isLoading = false;
     });
   }
-
 }

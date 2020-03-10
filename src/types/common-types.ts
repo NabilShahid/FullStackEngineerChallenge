@@ -9,3 +9,12 @@ export type Employee={
     DisplayName:string,
     IsAdmin:boolean
 }
+export type UserPickerOptions={
+    Mode:string,
+    ExcludeUsers:Array<string>
+}
+export type EmployeeSearchResult={
+    EmployeeId:string,
+    UserName:string,
+    DisplayName:string
+}

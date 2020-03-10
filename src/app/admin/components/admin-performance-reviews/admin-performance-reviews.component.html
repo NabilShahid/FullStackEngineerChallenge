@@ -1,5 +1,10 @@
 <div class="performance-review-actions">
-  <button nz-button nzType="default" class="action-button" (click)="visible=true">
+  <button
+    nz-button
+    nzType="default"
+    class="action-button"
+    (click)="visible = true"
+  >
     <i nz-icon nzType="plus"></i>Create New
   </button>
 </div>
@@ -16,18 +21,8 @@
   nzTitle="Create"
   (nzOnClose)="close()"
 >
-  <app-create-review></app-create-review>
-  <div class="footer">
-    <button
-      type="button"
-      (click)="close()"
-      class="ant-btn"
-      style="margin-right: 8px;"
-    >
-      <span>Cancel</span>
-    </button>
-    <button type="button" (click)="close()" class="ant-btn ant-btn-primary">
-      <span>Submit</span>
-    </button>
-  </div>
+  <app-create-review
+    *ngIf="visible"
+    (closeDrawer)="visible = false"
+  ></app-create-review>
 </nz-drawer>

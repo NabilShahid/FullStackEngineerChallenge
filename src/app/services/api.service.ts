@@ -17,6 +17,16 @@ export class ApiService {
       employeeObject
     );
   }
+  createPerformanceReview(employeeId: string,assignees:Array<string>) {
+    return this.performPostRequest(
+      "createPerformanceReview",
+      API_OPERATIONS.AdminOperations,
+      {
+        EmployeeId:employeeId,
+        Assignees:assignees
+      }
+    );
+  }
   getEmployees(startIndex, pageSize, orderBy, order, searchString) {
     return this.performGetRequest(
       `getEmployees?startIndex=${startIndex}&pageSize=${pageSize}&searchString=${searchString}&order=${order}`,
