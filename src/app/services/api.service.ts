@@ -56,6 +56,12 @@ export class ApiService {
       API_OPERATIONS.AdminOperations
     );
   }
+  getAllPerformanceReviews() {
+    return this.performGetRequest(
+      `getAllPerformanceReviews`,
+      API_OPERATIONS.AdminOperations
+    );
+  }
   login(userName: string, password: string) {
     return this.performGetRequest(
       `login?userName=${userName}&password=${password}`,

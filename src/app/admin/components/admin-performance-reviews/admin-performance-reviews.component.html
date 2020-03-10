@@ -8,7 +8,10 @@
     <i nz-icon nzType="plus"></i>Create New
   </button>
 </div>
-<app-reviews-list [adminMode]="true"></app-reviews-list>
+<nz-spin [nzSpinning]="loadingReviews">
+  
+  <app-reviews-list [data]="allPerformanceReviews" [adminMode]="true"></app-reviews-list>
+</nz-spin>
 <nz-drawer
   [nzBodyStyle]="{
     height: 'calc(100% - 55px)',
@@ -23,6 +26,7 @@
 >
   <app-create-review
     *ngIf="visible"
-    (closeDrawer)="visible = false"
+    (closeDrawer)="visible = false;getAllPerformanceReviews()"
+
   ></app-create-review>
 </nz-drawer>

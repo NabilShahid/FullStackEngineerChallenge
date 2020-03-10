@@ -1,8 +1,8 @@
+<!-- [nzPagination]="pagination" -->
 <nz-list
   [nzDataSource]="data"
   [nzItemLayout]="'vertical'"
   [nzRenderItem]="item"
-  [nzPagination]="pagination"
   [nzFooter]="footer"
 >
   <ng-template #item let-item>
@@ -28,7 +28,7 @@
       </ng-template>
       <ng-template #extra>
         <span *ngIf="adminMode">
-          <nz-rate [nzDisabled]="true" [ngModel]="0"></nz-rate>
+          <nz-rate [nzDisabled]="true" [ngModel]="item.AvgRating"></nz-rate>
           <div style="margin-top: 5px;" class="center-align">
             <span
               class="cursor-pointer"
@@ -36,7 +36,7 @@
               nzTooltipTitle="Total Assignees"
             >
               <i nz-icon nzType="user"></i>
-              156
+              {{ item.AssigneesCount }}
             </span>
 
             <span
@@ -45,7 +45,7 @@
               nzTooltipTitle="Feedbacks Submitted"
             >
               <i nz-icon nzType="check" style="margin-left: 20px;"></i>
-              2
+              {{ item.Feedbacks }}
             </span>
           </div>
         </span>
@@ -55,20 +55,22 @@
       </ng-template>
 
       <nz-list-item-meta
-        [nzAvatar]="item.avatar"
+        [nzAvatar]="
+          'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+        "
         [nzTitle]="nzTitle"
         [nzDescription]="item.jobTitle"
       >
-        <ng-template #nzTitle>Employee Name</ng-template>
+        <ng-template #nzTitle>{{ item.DisplayName }}</ng-template>
       </nz-list-item-meta>
     </nz-list-item>
   </ng-template>
 
-  <ng-template #pagination>
+  <!-- <ng-template #pagination>
     <nz-pagination
       [nzPageIndex]="1"
       [nzTotal]="50"
       (nzPageIndexChange)="loadData($event)"
     ></nz-pagination>
-  </ng-template>
+  </ng-template> -->
 </nz-list>

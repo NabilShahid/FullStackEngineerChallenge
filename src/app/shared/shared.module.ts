@@ -18,6 +18,7 @@ import { ReviewsListComponent } from "./components/reviews-list/reviews-list.com
 import { NzDrawerModule } from "ng-zorro-antd/drawer";
 import { FormsModule } from "@angular/forms";
 import { UserPickerComponent } from "./components/user-picker/user-picker.component";
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({
   declarations: [ReviewsListComponent, UserPickerComponent],
@@ -38,6 +39,7 @@ import { UserPickerComponent } from "./components/user-picker/user-picker.compon
     NzPaginationModule,
     NzRateModule,
     NzToolTipModule,
+    NzSpinModule,
     NzDrawerModule
   ],
   exports: [
@@ -46,6 +48,7 @@ import { UserPickerComponent } from "./components/user-picker/user-picker.compon
     NzCheckboxModule,
     NzButtonModule,
     NzFormModule,
+    NzSpinModule,
     NzMenuModule,
     NzIconModule,
     NzGridModule,
@@ -62,3 +65,11 @@ import { UserPickerComponent } from "./components/user-picker/user-picker.compon
   ]
 })
 export class SharedModule {}
+// Tasks
+// 1. Submit feedback on assigned reviews
+// 2. View assigned reviews
+// 3. View Feebacks of one review
+// 4. Update Employee
+// 5. Update assignees
+// 6. Header info
+// 7. Routing fix
