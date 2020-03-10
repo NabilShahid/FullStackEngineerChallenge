@@ -15,3 +15,8 @@
 .cursor-pointer{
     cursor: pointer;
 }
+.action-button{
+    color: #096dd9 !important;
+    border: unset !important;
+    box-shadow: unset !important;
+}

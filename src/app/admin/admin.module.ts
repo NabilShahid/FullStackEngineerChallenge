@@ -8,6 +8,7 @@ import { AdminMainComponent } from "./components/admin-main/admin-main.component
 import { RouterModule } from "@angular/router";
 import { CreateEmployeeComponent } from "./components/create-employee/create-employee.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     AdminHomeComponent,
     AdminEmployeesComponent,
     CreateEmployeeComponent,
-    AdminPerformanceReviewsComponent
+    AdminPerformanceReviewsComponent,
+    CreateReviewComponent
   ],
   imports: [
     CommonModule,
