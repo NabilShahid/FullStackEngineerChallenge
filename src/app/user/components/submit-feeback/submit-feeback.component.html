@@ -1,1 +1,68 @@
-<p>submit-feeback works!</p>
+<div class="sub-heading">
+    Employee Name
+</div>
+<div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Hard Work
+    </div>
+    <div nz-col nzSpan="18">
+      <nz-rate [(ngModel)]="ratingHardWork"></nz-rate>
+    </div>
+  </div>
+  <div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Commitment
+    </div>
+    <div nz-col nzSpan="18">
+      <nz-rate [(ngModel)]="ratingCommitment"></nz-rate>
+    </div>
+  </div>
+  <div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Punctuality
+    </div>
+    <div nz-col nzSpan="18">
+      <nz-rate [(ngModel)]="ratingPunctuality"></nz-rate>
+    </div>
+  </div>
+  <div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Team Play
+    </div>
+    <div nz-col nzSpan="18">
+      <nz-rate [(ngModel)]="ratingTeamPlayer"></nz-rate>
+    </div>
+  </div>
+  <div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Honesty
+    </div>
+    <div nz-col nzSpan="18">
+      <nz-rate [(ngModel)]="ratingHonesty"></nz-rate>
+    </div>
+  </div>
+  <div nz-row class="submit-feedback-row" nzGutter="8">
+    <div nz-col nzSpan="6">
+      Comments
+    </div>
+    <div nz-col nzSpan="18">
+      <textarea
+      style="width: 100%;"
+      nz-input
+      placeholder="Enter feedback comments..."
+      [(ngModel)]="comments"
+      [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+    ></textarea>
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <button
+      (click)="submitFeedback()"
+      [nzLoading]="submitting"
+      nz-button
+      nzType="primary"
+    >
+      <span>Submit</span>
+    </button>
+  </div>
+  

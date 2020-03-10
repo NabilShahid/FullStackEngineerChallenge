@@ -27,6 +27,29 @@ export class ApiService {
       }
     );
   }
+  submitFeedback( performanceReviewId: string,
+    employeeId: string,
+    comments: string,
+    ratingHardWork: number,
+    ratingCommitment: number,
+    ratingPunctuality: number,
+    ratingTeamPlayer: number,
+    ratingHonesty: number) {
+    return this.performPutRequest(
+      "submitFeedback",
+      API_OPERATIONS.UserOperations,
+      {
+        PerformanceReviewId: performanceReviewId,
+        EmployeeId: employeeId,
+        Comments: comments,
+        RatingHardWork: ratingHardWork,
+        RatingCommitment: ratingCommitment,
+        RatingPunctuality: ratingPunctuality,
+        RatingTeamPlayer: ratingTeamPlayer,
+        RatingHonesty: ratingHonesty
+      }
+    );
+  }
   getEmployees(startIndex, pageSize, orderBy, order, searchString) {
     return this.performGetRequest(
       `getEmployees?startIndex=${startIndex}&pageSize=${pageSize}&searchString=${searchString}&order=${order}`,

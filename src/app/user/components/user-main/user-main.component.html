@@ -1,6 +1,7 @@
 <div class="sub-heading">My Reviews</div>
 <div class="user-main-container">
-  <app-reviews-list (submitFeedback)="visible=true" [adminMode]="false"> </app-reviews-list>
+  <app-reviews-list (submitFeedback)="visible = true" [adminMode]="false">
+  </app-reviews-list>
 </div>
 <nz-drawer
   [nzBodyStyle]="{
@@ -11,16 +12,10 @@
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="Create"
+  nzTitle="Submit Feeback"
   (nzOnClose)="close()"
 >
-  <div nz-row nzGutter="8">
-    <div nz-col nzSpan="6">
-      Hello
-    </div>
-    <div nz-col nzSpan="12">
-        <nz-rate [nzDisabled]="true" [ngModel]="0"></nz-rate>
 
-    </div>
-  </div>
+<app-submit-feeback (closeDrawer)="visible=false"></app-submit-feeback>
+  
 </nz-drawer>
