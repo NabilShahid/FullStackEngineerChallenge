@@ -1,0 +1,26 @@
+<div class="sub-heading">My Reviews</div>
+<div class="user-main-container">
+  <app-reviews-list (submitFeedback)="visible=true" [adminMode]="false"> </app-reviews-list>
+</div>
+<nz-drawer
+  [nzBodyStyle]="{
+    height: 'calc(100% - 55px)',
+    overflow: 'auto',
+    'padding-bottom': '53px'
+  }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Create"
+  (nzOnClose)="close()"
+>
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="6">
+      Hello
+    </div>
+    <div nz-col nzSpan="12">
+        <nz-rate [nzDisabled]="true" [ngModel]="0"></nz-rate>
+
+    </div>
+  </div>
+</nz-drawer>
