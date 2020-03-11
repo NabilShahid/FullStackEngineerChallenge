@@ -1,12 +1,16 @@
 <div nz-row>
   <div nz-col [nzMd]="4">Employee:</div>
   <div nz-col [nzMd]="20">
-    <app-user-picker
+    <app-user-picker *ngIf="!editMode"
       (selectedUserEmitter)="
         employeeId = $event; updateMultipleExcludeUsers($event)
       "
       [options]="singlePickerOptions"
+      [defaultValue]="employeeId"
     ></app-user-picker>
+    <span *ngIf="editMode">
+      {{employeeName}}
+    </span>
   </div>
 </div>
 <div nz-row style="margin-top: 30px;">
@@ -15,17 +19,18 @@
     <app-user-picker
       (selectedUserEmitter)="assignees = $event"
       [options]="multiPickerOptions"
+      [defaultValue]="originalAssignees"
     ></app-user-picker>
   </div>
 </div>
 
 <div class="drawer-footer">
   <button
-    (click)="createPerformanceReview()"
+    (click)="editMode?manageReviewAssignees():createPerformanceReview()"
     [nzLoading]="creatingReview"
     nz-button
     nzType="primary"
   >
-    <span>Create Review</span>
+    <span>{{editMode?'Update':'Create'}} Review</span>
   </button>
 </div>

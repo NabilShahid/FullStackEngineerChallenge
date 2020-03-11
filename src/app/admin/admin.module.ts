@@ -39,6 +39,11 @@ import { CreateReviewComponent } from './components/create-review/create-review.
           {
             path: "performance-reviews",
             component: AdminPerformanceReviewsComponent
+          },
+          {
+            path: "**",
+            pathMatch: "full",
+            redirectTo: "home"
           }
         ]
       }

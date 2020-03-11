@@ -9,8 +9,20 @@
     <nz-list-item [nzActions]="[itemActions]" [nzExtra]="extra">
       <ng-template #itemActions>
         <span *ngIf="adminMode">
-          <button nz-button nzType="default" style="margin-left: 43px;">
-            <i nz-icon nzType="user-add"></i>Add Assignees
+          <button
+            nz-button
+            nzType="default"
+            (click)="
+              updateAssignees.emit({
+                PerformanceReviewId: item.PerformanceReviewId,
+                Assignees: item.Assignees,
+                EmployeeId:item.EmployeeId,
+                EmployeeName:item.DisplayName
+              })
+            "
+            style="margin-left: 43px;"
+          >
+            <i nz-icon nzType="user-add"></i>Update Assignees
           </button>
           <button nz-button nzType="default" style="margin-left: 10px;">
             <i nz-icon nzType="unordered-list"></i>View Reviews
@@ -20,7 +32,12 @@
           *ngIf="!adminMode"
           nz-button
           nzType="default"
-          (click)="submitFeedback.emit({EmployeeId:item.EmployeeId,PerformanceReviewId:item.PerformanceReviewId})"
+          (click)="
+            submitFeedback.emit({
+              EmployeeId: item.EmployeeId,
+              PerformanceReviewId: item.PerformanceReviewId
+            })
+          "
           style="margin-left: 10px;"
         >
           <i nz-icon nzType="check"></i>Submit Feedbck
@@ -50,7 +67,7 @@
           </div>
         </span>
         <span *ngIf="!adminMode">
-          {{item.DateAssigned}}
+          {{ item.DateAssigned }}
         </span>
       </ng-template>
 

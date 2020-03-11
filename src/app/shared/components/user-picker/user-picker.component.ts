@@ -22,8 +22,15 @@ export class UserPickerComponent implements OnInit {
     "/searchEmployees?searchString=" +
     searchString;
   searchChange$ = new Subject<Object>();
-  optionList: string[] = [];
-  selectedUser: string;
+  @Input("defaultValue") set defaultModelSetter(value:Array<EmployeeSearchResult>){
+    if(Array.isArray(value)){
+      this.optionList=value;
+      this.selectedUser=value.map(v=>v.EmployeeId);
+    }
+    this.optionList=value;
+  }
+  optionList: Array<EmployeeSearchResult> = [];
+  selectedUser: string|Array<string>;
   isLoading = false;
   @Output() selectedUserEmitter = new EventEmitter();
 

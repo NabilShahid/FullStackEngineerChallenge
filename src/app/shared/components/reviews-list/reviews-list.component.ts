@@ -10,6 +10,7 @@ export class ReviewsListComponent implements OnInit {
   @Input() adminMode: boolean = false;
   ngOnInit(): void {}
   @Output() submitFeedback = new EventEmitter();
+  @Output() updateAssignees = new EventEmitter();
 
   
 }

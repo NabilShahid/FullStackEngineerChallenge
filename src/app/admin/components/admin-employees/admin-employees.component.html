@@ -20,7 +20,10 @@
   nzTitle="Create Employee"
   (nzOnClose)="close()"
 >
-  <app-create-employee (closeDrawer)="visible = false" *ngIf="visible"></app-create-employee>
+  <app-create-employee
+    (closeDrawer)="visible = false; getEmployeeData(true)"
+    *ngIf="visible"
+  ></app-create-employee>
 </nz-drawer>
 
 <nz-table

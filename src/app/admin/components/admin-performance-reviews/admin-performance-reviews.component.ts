@@ -9,12 +9,13 @@ import { PerformanceReview } from "../../../../types/common-types";
 })
 export class AdminPerformanceReviewsComponent implements OnInit {
   constructor(private apiService: ApiService) {}
-  allPerformanceReviews: Array<PerformanceReview>;
+  allPerformanceReviews: Array<PerformanceReview>=[];
   ngOnInit() {
     this.getAllPerformanceReviews();
   }
   visible = false;
   loadingReviews: boolean = false;
+  editMode:boolean=true;
 
   open(): void {
     this.visible = true;
@@ -31,4 +32,5 @@ export class AdminPerformanceReviewsComponent implements OnInit {
     >;
     this.loadingReviews = false;
   }
+  currentReviewMeta={};
 }

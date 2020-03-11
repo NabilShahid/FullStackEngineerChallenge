@@ -64,6 +64,21 @@ export class ApiService {
       API_OPERATIONS.UserOperations
     );
   }
+  manageReviewAssignees(
+    performanceReviewId: string,
+    assigneesToAdd: Array<string>,
+    assigneesToRemove: Array<string>
+  ) {
+    return this.performPutRequest(
+      `manageReviewAssignees`,
+      API_OPERATIONS.AdminOperations,
+      {
+        PerformanceReviewId: performanceReviewId,
+        AssigneesToAdd: assigneesToAdd,
+        AssigneesToRemove: assigneesToRemove
+      }
+    );
+  }
   getAllPerformanceReviews() {
     return this.performGetRequest(
       `getAllPerformanceReviews`,
