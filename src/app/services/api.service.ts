@@ -79,6 +79,22 @@ export class ApiService {
       }
     );
   }
+  updateEmployee(employeeId: string, displayName: string, phoneNumber: string) {
+    return this.performPutRequest(
+      `updateEmployee?employeeId=${employeeId}`,
+      API_OPERATIONS.AdminOperations,
+      {
+        DisplayName: displayName,
+        PhoneNumber: phoneNumber
+      }
+    );
+  }
+  deleteEmployee(employeeId: string) {
+    return this.performDeleteRequest(
+      `deleteEmployee?employeeId=${employeeId}`,
+      API_OPERATIONS.AdminOperations
+    );
+  }
   getAllPerformanceReviews() {
     return this.performGetRequest(
       `getAllPerformanceReviews`,
@@ -95,6 +111,13 @@ export class ApiService {
     await this.verifyUserSession();
     const result = await this.http
       .get(environment.apiServer + operation + "/" + url)
+      .toPromise();
+    return result;
+  }
+  async performDeleteRequest(url: string, operation: string) {
+    await this.verifyUserSession();
+    const result = await this.http
+      .delete(environment.apiServer + operation + "/" + url)
       .toPromise();
     return result;
   }

@@ -1,5 +1,6 @@
 import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from "@angular/core";
+import MESSAGES from 'src/app/constants/messages';
 
 @Component({
   selector: "app-admin-employees",
@@ -59,5 +60,13 @@ export class AdminEmployeesComponent implements OnInit {
 
   close(): void {
     this.visible = false;
+  }
+  async deleteEmployee(employeeId){
+    if(confirm(MESSAGES.ConfirmDeleteEmployee)){
+      this.loading=true;
+      await this.apiService.deleteEmployee(employeeId);
+      this.getEmployeeData();
+      
+    }
   }
 }

@@ -3,6 +3,7 @@ export type Employee = {
   UserName: string;
   PhoneNumber: string;
   Password: string;
+  EmployeeId?:string,
 };
 export type ClientSessionObject = {
   EmployeeId: string;

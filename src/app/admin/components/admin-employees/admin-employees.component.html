@@ -3,7 +3,7 @@
     nz-button
     nzType="default"
     class="action-button"
-    (click)="visible = true"
+    (click)="visible = true; editMode = false"
   >
     <i nz-icon nzType="plus"></i>Create New
   </button>
@@ -17,12 +17,14 @@
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="Create Employee"
+  nzTitle="{{editMode?'Update':'Create'}} Employee"
   (nzOnClose)="close()"
 >
   <app-create-employee
     (closeDrawer)="visible = false; getEmployeeData(true)"
     *ngIf="visible"
+    [editMode]="editMode"
+    [selectedEmployeeForEdit]="selectedEmployeeForEdit"
   ></app-create-employee>
 </nz-drawer>
 
@@ -40,20 +42,34 @@
 >
   <thead (nzSortChange)="sort($event)" nzSingleSort>
     <tr>
+      <th></th>
       <th nzShowSort nzSortKey="display_name">Name</th>
       <th>User Name</th>
       <th>Phone Number</th>
       <th>Date Created</th>
-      <th>Date Modified</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of ajaxTable.data">
+      <td
+        nz-tooltip
+        nzTooltipTitle="Edit employee"
+        (click)="visible = true; editMode = true;selectedEmployeeForEdit=data;"
+      >
+        <i nz-icon nzType="edit" nzTheme="outline"></i>
+      </td>
       <td>{{ data.DisplayName }}</td>
       <td>{{ data.UserName }}</td>
       <td>{{ data.PhoneNumber }}</td>
       <td>{{ data.DateCreated }}</td>
-      <td>{{ data.Modified }}</td>
+      <td
+        nz-tooltip
+        nzTooltipTitle="Delete employee"
+        (click)="deleteEmployee(data.EmployeeId)"
+      >
+        <i nz-icon nzType="delete" nzTheme="outline"></i>
+      </td>
     </tr>
   </tbody>
 </nz-table>

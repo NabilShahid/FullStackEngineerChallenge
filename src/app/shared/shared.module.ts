@@ -19,9 +19,10 @@ import { NzDrawerModule } from "ng-zorro-antd/drawer";
 import { FormsModule } from "@angular/forms";
 import { UserPickerComponent } from "./components/user-picker/user-picker.component";
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { FormatDatePipe } from './pipes/format-date.pipe';
 
 @NgModule({
-  declarations: [ReviewsListComponent, UserPickerComponent],
+  declarations: [ReviewsListComponent, UserPickerComponent, FormatDatePipe],
   imports: [
     CommonModule,
     FormsModule,

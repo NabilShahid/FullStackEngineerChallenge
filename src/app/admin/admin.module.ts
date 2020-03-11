@@ -28,10 +28,10 @@ import { CreateReviewComponent } from './components/create-review/create-review.
         path: "",
         component: AdminMainComponent,
         children: [
-          {
-            path: "home",
-            component: AdminHomeComponent
-          },
+          // {
+          //   path: "home",
+          //   component: AdminHomeComponent
+          // },
           {
             path: "employees",
             component: AdminEmployeesComponent
@@ -43,7 +43,7 @@ import { CreateReviewComponent } from './components/create-review/create-review.
           {
             path: "**",
             pathMatch: "full",
-            redirectTo: "home"
+            redirectTo: "employees"
           }
         ]
       }

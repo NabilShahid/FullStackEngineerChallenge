@@ -9,7 +9,7 @@
         [nzXs]="24"
         nzErrorTip="User name is required!"
       >
-        <input nz-input formControlName="username" id="username" />
+        <input nz-input formControlName="username" id="username" [disabled]="editMode"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
@@ -50,7 +50,7 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <nz-form-item *ngIf="!editMode">
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired
         >Password</nz-form-label
       >
@@ -70,7 +70,7 @@
         </ng-template>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <nz-form-item *ngIf="!editMode">
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
         >Confirm Password</nz-form-label
       >
@@ -100,7 +100,7 @@
   <nz-form-item nz-row class="create-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button [nzLoading]="creatingEmployee" nz-button nzType="primary">
-        Create Employee
+        {{editMode?'Update':'Create'}} Employee
       </button>
     </nz-form-control>
   </nz-form-item>
