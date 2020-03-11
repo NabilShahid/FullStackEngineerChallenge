@@ -32,5 +32,11 @@ export class AdminPerformanceReviewsComponent implements OnInit {
     >;
     this.loadingReviews = false;
   }
+  async getSubmittedReviews({PerformanceReviewId}){
+   this.submittedReviews= await this.apiService.getSubmittedReviews(PerformanceReviewId);
+   this.reviewsVisible=true;
+  }
+  reviewsVisible=false;
   currentReviewMeta={};
+  submittedReviews;
 }

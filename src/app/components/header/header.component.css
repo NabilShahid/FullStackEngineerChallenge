@@ -4,3 +4,10 @@
   padding: 12px;
   box-shadow: var(--material-box-shadow);
 }
+.app-title{
+  font-size: 17px;
+}
+.logout-icon{
+  color: white;
+  margin-top: 4px;
+}

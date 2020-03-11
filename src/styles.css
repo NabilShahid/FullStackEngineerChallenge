@@ -12,6 +12,9 @@
 .center-align{
     text-align: center;
 }
+.right-align{
+    text-align: right;
+}
 .cursor-pointer{
     cursor: pointer;
 }

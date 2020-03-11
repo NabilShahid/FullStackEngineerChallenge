@@ -1,12 +1,12 @@
-<div class="sub-heading">
-    Employee Name
+<div *ngIf="viewMode" class="sub-heading">
+    {{employeeName}}
 </div>
 <div nz-row class="submit-feedback-row" nzGutter="8">
     <div nz-col nzSpan="6">
       Hard Work
     </div>
     <div nz-col nzSpan="18">
-      <nz-rate [(ngModel)]="ratingHardWork"></nz-rate>
+      <nz-rate [disabled]="viewMode" [(ngModel)]="ratingHardWork"></nz-rate>
     </div>
   </div>
   <div nz-row class="submit-feedback-row" nzGutter="8">
@@ -14,7 +14,7 @@
       Commitment
     </div>
     <div nz-col nzSpan="18">
-      <nz-rate [(ngModel)]="ratingCommitment"></nz-rate>
+      <nz-rate [disabled]="viewMode" [(ngModel)]="ratingCommitment"></nz-rate>
     </div>
   </div>
   <div nz-row class="submit-feedback-row" nzGutter="8">
@@ -22,7 +22,7 @@
       Punctuality
     </div>
     <div nz-col nzSpan="18">
-      <nz-rate [(ngModel)]="ratingPunctuality"></nz-rate>
+      <nz-rate [disabled]="viewMode" [(ngModel)]="ratingPunctuality"></nz-rate>
     </div>
   </div>
   <div nz-row class="submit-feedback-row" nzGutter="8">
@@ -30,7 +30,7 @@
       Team Play
     </div>
     <div nz-col nzSpan="18">
-      <nz-rate [(ngModel)]="ratingTeamPlayer"></nz-rate>
+      <nz-rate [disabled]="viewMode" [(ngModel)]="ratingTeamPlayer"></nz-rate>
     </div>
   </div>
   <div nz-row class="submit-feedback-row" nzGutter="8">
@@ -38,7 +38,7 @@
       Honesty
     </div>
     <div nz-col nzSpan="18">
-      <nz-rate [(ngModel)]="ratingHonesty"></nz-rate>
+      <nz-rate [disabled]="viewMode" [(ngModel)]="ratingHonesty"></nz-rate>
     </div>
   </div>
   <div nz-row class="submit-feedback-row" nzGutter="8">
@@ -48,14 +48,15 @@
     <div nz-col nzSpan="18">
       <textarea
       style="width: 100%;"
+      [disabled]="viewMode"
       nz-input
-      placeholder="Enter feedback comments..."
+      placeholder="{{viewMode?'':'Enter feedback comments...'}}"
       [(ngModel)]="comments"
       [nzAutosize]="{ minRows: 2, maxRows: 6 }"
     ></textarea>
     </div>
   </div>
-  <div class="drawer-footer">
+  <div class="drawer-footer" *ngIf="!viewMode">
     <button
       (click)="submitFeedback()"
       [nzLoading]="submitting"

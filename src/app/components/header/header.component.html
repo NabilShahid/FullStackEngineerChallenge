@@ -1,4 +1,16 @@
 <div nz-row id="header">
-  <div nz-col nzSpan="12">Feedback Managent System</div>
-  <div nz-col nzSpan="12">{{displayName}}</div>
+  <div nz-col nzSpan="12" class="app-title">Feedback Managent System</div>
+  <div nz-col nzSpan="11" class="right-align">{{ storageService.user&&storageService.user.DisplayName }}</div>
+  <div nz-col nzSpan="1" style="padding-left: 10px;">
+    <i *ngIf="storageService.user"
+      nz-tooltip
+      nzTooltipTitle="Logout"
+      (click)="logout()"
+      nzShape="circle"
+      nz-icon
+      class="cursor-pointer logout-icon"
+      style="color: white;"
+      nzType="poweroff"
+    ></i>
+  </div>
 </div>

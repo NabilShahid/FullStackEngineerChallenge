@@ -16,15 +16,24 @@
               updateAssignees.emit({
                 PerformanceReviewId: item.PerformanceReviewId,
                 Assignees: item.Assignees,
-                EmployeeId:item.EmployeeId,
-                EmployeeName:item.DisplayName
+                EmployeeId: item.EmployeeId,
+                EmployeeName: item.DisplayName
               })
             "
             style="margin-left: 43px;"
           >
             <i nz-icon nzType="user-add"></i>Update Assignees
           </button>
-          <button nz-button nzType="default" style="margin-left: 10px;">
+          <button
+            (click)="
+              viewReviews.emit({
+                PerformanceReviewId: item.PerformanceReviewId
+              })
+            "
+            nz-button
+            nzType="default"
+            style="margin-left: 10px;"
+          >
             <i nz-icon nzType="unordered-list"></i>View Reviews
           </button>
         </span>
@@ -67,7 +76,7 @@
           </div>
         </span>
         <span *ngIf="!adminMode">
-          {{ item.DateAssigned }}
+          {{ item.DateAssigned | formatDate }} 
         </span>
       </ng-template>
 

@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserMainComponent } from './components/user-main/user-main.component';
 import { RouterModule } from '@angular/router';
-import { SubmitFeebackComponent } from './components/submit-feeback/submit-feeback.component';
 
 
 
 @NgModule({
-  declarations: [UserMainComponent, SubmitFeebackComponent],
+  declarations: [UserMainComponent],
   imports: [
     CommonModule,
     SharedModule,

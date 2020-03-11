@@ -11,6 +11,7 @@ export class ReviewsListComponent implements OnInit {
   ngOnInit(): void {}
   @Output() submitFeedback = new EventEmitter();
   @Output() updateAssignees = new EventEmitter();
+  @Output() viewReviews = new EventEmitter();
 
   
 }

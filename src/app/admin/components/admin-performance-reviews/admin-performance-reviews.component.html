@@ -1,3 +1,4 @@
+<div class="sub-heading">Performance Reviews</div>
 <div class="performance-review-actions">
   <button
     nz-button
@@ -10,7 +11,10 @@
 </div>
 <nz-spin [nzSpinning]="loadingReviews">
   <app-reviews-list
-    (updateAssignees)="editMode = true; visible = true;currentReviewMeta=$event"
+    (updateAssignees)="
+      editMode = true; visible = true; currentReviewMeta = $event
+    "
+    (viewReviews)="getSubmittedReviews($event)"
     [data]="allPerformanceReviews"
     [adminMode]="true"
   ></app-reviews-list>
@@ -24,7 +28,7 @@
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="{{editMode?'Update':'Create'}} Review"
+  nzTitle="{{ editMode ? 'Update' : 'Create' }} Review"
   (nzOnClose)="close()"
 >
   <app-create-review
@@ -36,4 +40,30 @@
     [employeeName]="currentReviewMeta.EmployeeName"
     [performanceReviewId]="currentReviewMeta.PerformanceReviewId"
   ></app-create-review>
+</nz-drawer>
+<nz-drawer
+  [nzBodyStyle]="{
+    height: 'calc(100% - 55px)',
+    overflow: 'auto',
+    'padding-bottom': '53px'
+  }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="reviewsVisible"
+  nzTitle="Reviews"
+  (nzOnClose)="reviewsVisible = false"
+>
+  <div *ngIf="reviewsVisible">
+    <app-submit-feeback
+      *ngFor="let review of submittedReviews"
+      [ratingHardWork]="review.RatingHardWork"
+      [ratingCommitment]="review.RatingCommitment"
+      [ratingPunctuality]="review.RatingPunctuality"
+      [ratingTeamPlayer]="review.RatingTeamPlayer"
+      [ratingHonesty]="review.RatingHonesty"
+      [comments]="review.Comments"
+      [employeeName]="review.DisplayName"
+       [viewMode]="true"
+    ></app-submit-feeback>
+  </div>
 </nz-drawer>

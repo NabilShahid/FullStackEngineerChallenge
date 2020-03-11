@@ -1,3 +1,4 @@
+<div class="sub-heading">Employees</div>
 <div class="create-employee-actions">
   <button
     nz-button
@@ -62,7 +63,7 @@
       <td>{{ data.DisplayName }}</td>
       <td>{{ data.UserName }}</td>
       <td>{{ data.PhoneNumber }}</td>
-      <td>{{ data.DateCreated }}</td>
+      <td>{{ data.DateCreated | formatDate }}</td>
       <td
         nz-tooltip
         nzTooltipTitle="Delete employee"

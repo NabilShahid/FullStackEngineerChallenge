@@ -20,9 +20,10 @@ import { FormsModule } from "@angular/forms";
 import { UserPickerComponent } from "./components/user-picker/user-picker.component";
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { FormatDatePipe } from './pipes/format-date.pipe';
+import { SubmitFeebackComponent } from '../user/components/submit-feeback/submit-feeback.component';
 
 @NgModule({
-  declarations: [ReviewsListComponent, UserPickerComponent, FormatDatePipe],
+  declarations: [ReviewsListComponent, UserPickerComponent, FormatDatePipe,SubmitFeebackComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -62,7 +63,9 @@ import { FormatDatePipe } from './pipes/format-date.pipe';
     NzRateModule,
     ReviewsListComponent,
     UserPickerComponent,
-    NzDrawerModule
+    NzDrawerModule,
+    SubmitFeebackComponent,
+    FormatDatePipe
   ]
 })
 export class SharedModule {}

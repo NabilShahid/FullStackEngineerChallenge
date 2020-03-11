@@ -17,15 +17,16 @@ export class SubmitFeebackComponent implements OnInit {
   ) {}
   @Input() performanceReviewId: string;
   employeeId: string;
-  comments: string;
-  ratingHardWork: number;
-  ratingCommitment: number;
-  ratingPunctuality: number;
-  ratingTeamPlayer: number;
-  ratingHonesty: number;
+  @Input() comments: string;
+  @Input() ratingHardWork: number;
+  @Input() ratingCommitment: number;
+  @Input() ratingPunctuality: number;
+  @Input() ratingTeamPlayer: number;
+  @Input() ratingHonesty: number;
   submitting: boolean = false;
   @Output() closeDrawer = new EventEmitter();
-
+  @Input() viewMode=false;
+  @Input() employeeName:string;
   ngOnInit() {}
   async submitFeedback() {
     this.submitting = true;
