@@ -23,6 +23,7 @@ export class AdminPerformanceReviewsComponent implements OnInit {
   close(): void {
     this.visible = false;
   }
+  convertDatesToLocal(){};
   async getAllPerformanceReviews() {
     this.loadingReviews = true;
     this.allPerformanceReviews = (await this.apiService.getAllPerformanceReviews()) as Array<

@@ -1,5 +1,6 @@
+import { StorageService } from "./../../../services/storage.service";
 import { ApiService } from "./../../../services/api.service";
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { NzMessageService } from "ng-zorro-antd/message";
 import MESSAGES from "src/app/constants/messages";
 
@@ -9,9 +10,12 @@ import MESSAGES from "src/app/constants/messages";
   styleUrls: ["./submit-feeback.component.css"]
 })
 export class SubmitFeebackComponent implements OnInit {
-  constructor(private apiService: ApiService,    private message: NzMessageService,
-    ) {}
-  performanceReviewId: string;
+  constructor(
+    private apiService: ApiService,
+    private message: NzMessageService,
+    private storageService: StorageService
+  ) {}
+  @Input() performanceReviewId: string;
   employeeId: string;
   comments: string;
   ratingHardWork: number;
@@ -26,14 +30,14 @@ export class SubmitFeebackComponent implements OnInit {
   async submitFeedback() {
     this.submitting = true;
     await this.apiService.submitFeedback(
-      'f8aadb86-5cd8-4b57-bcf6-f5f1b91719cb',
-      "4e691be5-811d-4e8a-ae6e-744961f6a820",
+      this.performanceReviewId,
+      this.storageService.user.EmployeeId,
       this.comments,
-      this.ratingHardWork,
-      this.ratingCommitment,
-      this.ratingPunctuality,
-      this.ratingTeamPlayer,
-      this.ratingHonesty
+      this.ratingHardWork || 0,
+      this.ratingCommitment || 0,
+      this.ratingPunctuality || 0,
+      this.ratingTeamPlayer || 0,
+      this.ratingHonesty || 0
     );
     this.message.create("success", MESSAGES.FeedbackSubmitSuccess);
     this.closeDrawer.emit();

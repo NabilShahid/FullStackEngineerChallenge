@@ -19,4 +19,5 @@ export class StorageService {
     this._user = value;
     localStorage.setItem("User", JSON.stringify(value));
   }
+  
 }

@@ -20,7 +20,7 @@
           *ngIf="!adminMode"
           nz-button
           nzType="default"
-          (click)="submitFeedback.emit()"
+          (click)="submitFeedback.emit({EmployeeId:item.EmployeeId,PerformanceReviewId:item.PerformanceReviewId})"
           style="margin-left: 10px;"
         >
           <i nz-icon nzType="check"></i>Submit Feedbck
@@ -50,7 +50,7 @@
           </div>
         </span>
         <span *ngIf="!adminMode">
-          13-02-1992
+          {{item.DateAssigned}}
         </span>
       </ng-template>
 
@@ -59,7 +59,7 @@
           'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
         "
         [nzTitle]="nzTitle"
-        [nzDescription]="item.jobTitle"
+        [nzDescription]="item.UserName"
       >
         <ng-template #nzTitle>{{ item.DisplayName }}</ng-template>
       </nz-list-item-meta>

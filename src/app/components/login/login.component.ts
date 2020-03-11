@@ -1,3 +1,4 @@
+import { ClientSessionObject } from './../../../types/common-types';
 import { StorageService } from "./../../services/storage.service";
 import { ApiService } from "./../../services/api.service";
 /**
@@ -45,35 +46,27 @@ export class LoginComponent implements OnInit {
    */
   async authenticateUser(): Promise<void> {
     this.logingIn = true;
-    const loginResult: any = await this.apiService.login(
+    const loginResult: ClientSessionObject =( await this.apiService.login(
       this.loginForm.get("userName").value,
       this.loginForm.get("password").value
-    );
+    ) as ClientSessionObject);
     this.logingIn = false;
     if (loginResult) {
       this.storageService.user = loginResult;
-      this.navigateUser(loginResult.IsAdmin);
+      if (loginResult.IsAdmin) {
+        this.rtr.navigate(["admin"]);
+      } else {
+        this.rtr.navigate(["user"]);
+      }
     } else {
       this.loginErrorMsg = MESSAGES.InvalidCredentials;
     }
   }
-  navigateUser(isAdmin: boolean) {
-    if (isAdmin) {
-      this.rtr.navigate(["admin"]);
-    } else {
-      this.rtr.navigate(["user"]);
-    }
-  }
+
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]]
     });
-    this.loginIfAuthenticated();
-  }
-  loginIfAuthenticated(): void {
-    if (this.storageService.user.EmployeeId) {
-      this.navigateUser(this.storageService.user.IsAdmin);
-    }
   }
 }

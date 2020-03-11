@@ -17,24 +17,26 @@ export class ApiService {
       employeeObject
     );
   }
-  createPerformanceReview(employeeId: string,assignees:Array<string>) {
+  createPerformanceReview(employeeId: string, assignees: Array<string>) {
     return this.performPostRequest(
       "createPerformanceReview",
       API_OPERATIONS.AdminOperations,
       {
-        EmployeeId:employeeId,
-        Assignees:assignees
+        EmployeeId: employeeId,
+        Assignees: assignees
       }
     );
   }
-  submitFeedback( performanceReviewId: string,
+  submitFeedback(
+    performanceReviewId: string,
     employeeId: string,
     comments: string,
     ratingHardWork: number,
     ratingCommitment: number,
     ratingPunctuality: number,
     ratingTeamPlayer: number,
-    ratingHonesty: number) {
+    ratingHonesty: number
+  ) {
     return this.performPutRequest(
       "submitFeedback",
       API_OPERATIONS.UserOperations,
@@ -54,6 +56,12 @@ export class ApiService {
     return this.performGetRequest(
       `getEmployees?startIndex=${startIndex}&pageSize=${pageSize}&searchString=${searchString}&order=${order}`,
       API_OPERATIONS.AdminOperations
+    );
+  }
+  getAssignedReviews(employeeId: string) {
+    return this.performGetRequest(
+      `getAssignedReviews?employeeId=${employeeId}`,
+      API_OPERATIONS.UserOperations
     );
   }
   getAllPerformanceReviews() {

@@ -24,4 +24,10 @@ export type PerformanceReview = {
   AvgRating: number;
   AssigneesCount: number;
   Feedbacks: number;
+  DateAssigned:string
 };
+
+export type ReviewMeta={
+  EmployeeId:string,
+  PerformanceReviewId:string
+}
